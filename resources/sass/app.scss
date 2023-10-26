@@ -1,0 +1,76 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap');
+
+* {
+  font-family: 'Heebo', sans-serif;
+}
+svg {
+  display: inline-block;
+}
+.btn {
+  @apply py-2 px-3 rounded inline-flex items-center space-x-2 leading-4 text-xs leading-4 font-medium uppercase tracking-wider duration-75 cursor-pointer mx-2;
+  width: fit-content;
+  &-red {
+    @apply bg-siadi-red text-white hover:bg-red-800;
+  }
+  &-green {
+    @apply bg-siadi-green-500 text-white hover:bg-green-800;
+  }
+  &-blue {
+    @apply bg-siadi-blue-500 text-white hover:bg-blue-800;
+  }
+  &-blue-light {
+    @apply bg-siadi-blue-300 text-white hover:bg-blue-800;
+  }
+}
+.content-form > div {
+  box-shadow: -4px 4px 4px 2px #ccc;
+  @apply ml-10 mt-16 rounded-lg;
+    h2 {
+      @apply bg-siadi-blue-900 text-white text-lg py-2 px-2 rounded-t-lg capitalize;
+    }
+    h2+div {
+      @apply p-2;
+    }
+    label, label.block span, div.block span:not(.form-error) {
+      @apply text-siadi-blue-700 font-medium capitalize
+    }
+    input {
+      @apply text-siadi-blue-700
+    }
+}
+.border-t-20 {
+  border-top-width: 20px;
+}
+.input-underline {
+  @apply mt-0 block w-full px-0.5 border-0 border-b-2 border-siadi-blue-300 focus:ring-0 focus:border-siadi-blue-500;
+}
+.is-invalid-input {
+   @apply border-siadi-red text-red-500;
+}
+.table-view {
+    @apply min-w-max w-full table-auto;
+    thead {
+        th {
+            @apply bg-gradient-to-b from-white to-gray-300 px-6 py-3 text-left text-sm font-medium text-siadi-blue-900 uppercase tracking-wider;
+        }
+    }
+    tbody {
+        @apply text-gray-600 text-sm font-light;
+        tr {
+            @apply border-b border-gray-200 hover:bg-gray-100;
+        }
+        td {
+            @apply px-6 py-2 text-sm text-siadi-blue-900;
+        }
+    }
+}
+.table-cell .btn {
+  display: inline-block;
+  margin: 0;
+}
+.is-visible {
+  @apply text-red-500 text-sm m-1 block
+}
