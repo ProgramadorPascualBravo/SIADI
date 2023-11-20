@@ -123,6 +123,8 @@
                     <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('moodle-report') }}">Usuarios plataforma</a></li>
                     <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('course-report') }}">Asignaturas</a></li>
                     <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('enrollment-report') }}">Matrículas</a></li>
+                    <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('reporte-nunca.export') }}">Reportes Nunca</a></li>
+
             </ul>
         </div>
         @endcan
