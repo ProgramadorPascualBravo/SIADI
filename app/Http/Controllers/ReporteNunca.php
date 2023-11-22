@@ -13,6 +13,18 @@ class ReporteNunca extends Controller implements FromCollection
     {
         return Vista::all();
     }
+    //  public function show()
+    //    {
+    //        $registros = $this->collection();
+    //
+    //        return view('reportsNever.index', ['registros' => $registros]);
+    //    }
+
+    public function show()
+    {
+        $registros = Vista::all(); // Reemplaza TuModelo con el nombre de tu modelo
+        return view('reportsNever.index', ['registros' => $registros]);
+    }
 
     public function export()
     {
@@ -24,17 +36,3 @@ class ReporteNunca extends Controller implements FromCollection
 
 
 
-
-//class ReporteNunca extends Controller
-//{
-//    public function export()
-//    {
-//        $vista = Vista::all();
-//
-//        return Excel::create('reporte-nunca', function($excel) use ($vista) {
-//            $excel->sheet('reporte-nunca', function($sheet) use ($vista) {
-//                $sheet->fromArray($vista->toArray());
-//            });
-//        })->save('reporte-nunca.xlsx');
-//    }
-//}

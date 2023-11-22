@@ -41,6 +41,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::view('/role', 'permission-role.index', ['option' => false])->name('role-index');;
 
+        Route::view('/reports', 'reportsNever.index')->name('reportsNever-index');
+        Route::get('/dashboard/reports', [ReporteNunca::class, 'show']);
+
         Route::view('/permission', 'permission-role.index', ['option' => true])->name('permission-index');
 
         Route::view('/students', 'student.index')->name('moodle-index')
