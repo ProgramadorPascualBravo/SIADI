@@ -144,3 +144,12 @@ Breadcrumbs::for('search', function (BreadcrumbTrail  $trail){
    $trail->parent('dashboard');
    $trail->push('Búsqueda', route('search-index'));
 });
+
+Breadcrumbs::for('reports-never', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Reports Never', route('reports-never.index'));
+});
+
+Breadcrumbs::for('dashboard.reports', function ($trail) {
+    $trail->push('Reports', route('dashboard.reports'));
+});

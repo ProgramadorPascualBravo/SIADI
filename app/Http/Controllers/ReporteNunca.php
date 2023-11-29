@@ -13,16 +13,10 @@ class ReporteNunca extends Controller implements FromCollection
     {
         return Vista::all();
     }
-    //  public function show()
-    //    {
-    //        $registros = $this->collection();
-    //
-    //        return view('reportsNever.index', ['registros' => $registros]);
-    //    }
 
     public function show()
     {
-        $registros = Vista::all(); // Reemplaza TuModelo con el nombre de tu modelo
+        $registros = Vista::all();
         return view('reportsNever.index', ['registros' => $registros]);
     }
 

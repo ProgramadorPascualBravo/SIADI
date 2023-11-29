@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.0.28",
         "ext-gettext": "*",
+        "barryvdh/laravel-cors": "^3.0",
         "consoletvs/charts": "6.*",
         "diglactic/laravel-breadcrumbs": "^8.0",
         "felixkiss/uniquewith-validator": "^3.4",
