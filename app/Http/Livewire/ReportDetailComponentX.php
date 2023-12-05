@@ -10,31 +10,33 @@ class ReportDetailComponent extends Component
 {
     use WithPagination;
 
-    protected $registros;
+    public $registros;
     public $selectedFaculty = '';
 
     public function mount()
     {
+        // No es necesario cargar todos los registros al inicio
         $this->registros = Vista::paginate(10);
     }
 
     public function render()
     {
+        // Utiliza la variable $this->selectedFaculty directamente en la consulta
+        $filteredRecords = ($this->selectedFaculty)
+            ? Vista::where('Facultad', $this->selectedFaculty)->paginate(10)
+            : Vista::paginate(10);
+
         $uniqueFaculties = Vista::pluck('Facultad')->unique();
 
         return view('livewire.reportsNever.report-detail-component', [
-            'registros' => $this->registros,
+            'registros' => $filteredRecords,
             'uniqueFaculties' => $uniqueFaculties,
         ]);
     }
 
     public function filterByFaculty()
     {
-        $this->registros = ($this->selectedFaculty)
-            ? Vista::where('Facultad', $this->selectedFaculty)->paginate(10)
-            : Vista::paginate(10);
-
+        // No es necesario llamar a $this->render() manualmente, Livewire lo hará automáticamente
         $this->resetPage();
     }
 }
-
