@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
+ Route::get('/dashboard/enrollment/report', 'ReporteNunca@export')->name('reporte-nunca.export');
 */
 
 
@@ -28,7 +29,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/', function (){
            return view('dashboard');
         })->name('dashboard');
-        Route::get('/dashboard/enrollment/report', 'ReporteNunca@export')->name('reporte-nunca.export');
+        Route::get('/dashboard/enrollment/report', [ReporteNunca::class, 'export'])->name('reporte-nunca.export');
+
         Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('log-index');
        Route::view('/user/', 'user.index')->name('user-index')
            ->middleware('permission:user_read');

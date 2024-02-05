@@ -10,8 +10,9 @@ class ReportDetailComponent extends Component
 {
     use WithPagination;
 
-    protected $registros;
     public $selectedFaculty = '';
+
+    protected $registros;
 
     public function mount()
     {
@@ -20,7 +21,7 @@ class ReportDetailComponent extends Component
 
     public function render()
     {
-        $uniqueFaculties = Vista::pluck('Facultad')->unique();
+        $uniqueFaculties = Vista::pluck('CodigoCurso')->unique();
 
         return view('livewire.reportsNever.report-detail-component', [
             'registros' => $this->registros,
@@ -31,7 +32,7 @@ class ReportDetailComponent extends Component
     public function filterByFaculty()
     {
         $this->registros = ($this->selectedFaculty)
-            ? Vista::where('Facultad', $this->selectedFaculty)->paginate(10)
+            ? Vista::where('CodigoCurso', $this->selectedFaculty)->paginate(10)
             : Vista::paginate(10);
 
         $this->resetPage();

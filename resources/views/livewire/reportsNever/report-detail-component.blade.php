@@ -16,13 +16,11 @@
 
         <h1 class="text-3xl font-bold mb-4">Reportes Nunca</h1>
 
-        @if ($registros->isNotEmpty())
+        @if ($registros && $registros->isNotEmpty())
             <div class="flex-1 overflow-x-auto">
                 <table class="w-full border rounded-lg">
                     <thead class="bg-gray-800 text-white">
                     <tr>
-                        <th class="py-3 px-6 text-left">Facultad</th>
-                        <th class="py-3 px-6 text-left">Programa</th>
                         <th class="py-3 px-6 text-left">CodigoCurso</th>
                         <th class="py-3 px-6 text-left">InicioCurso</th>
                         <th class="py-3 px-6 text-left">Rol</th>
@@ -35,8 +33,6 @@
                     <tbody class="divide-y divide-gray-200">
                     @foreach ($registros as $registro)
                         <tr class="{{ $loop->even ? 'bg-gray-100' : 'bg-white' }}">
-                            <td class="py-3 px-6">{{ $registro->Facultad }}</td>
-                            <td class="py-3 px-6">{{ $registro->programa }}</td>
                             <td class="py-3 px-6">{{ $registro->CodigoCurso }}</td>
                             <td class="py-3 px-6">{{ $registro->InicioCurso ?? 'N/A' }}</td>
                             <td class="py-3 px-6">{{ $registro->Rol }}</td>

@@ -52,11 +52,11 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://siadi.pascualbravovirtual.edu.co/public/'),
 
-    'asset_url' => env('ASSET_URL', 'http://127.0.0.1:8000'),
+    'asset_url' => env('ASSET_URL', 'https://siadi.pascualbravovirtual.edu.co/public/'),
 
-    'mix_url' => env('MIX_ASSET_URL', 'http://127.0.0.1:8000'),
+    'mix_url' => env('MIX_ASSET_URL', 'https://siadi.pascualbravovirtual.edu.co/public/'),
 
    /*
    |--------------------------------------------------------------------------

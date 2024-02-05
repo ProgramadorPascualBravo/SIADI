@@ -12,7 +12,7 @@ return [
     | in web browsers. You are free to adjust these settings as needed.
     |
     | To learn more: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-    |
+    |'https://siadi.pascualbravovirtual.edu.co/public'
     */
 
     'paths' => ['api/*'],
@@ -20,18 +20,17 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        'http://127.0.0.1:8000',
-        'https://siadi.pascualbravovirtual.edu.co/public'
+        'https://siadi.pascualbravovirtual.edu.co/public/',
+
     ],
 
     'allowed_origins_patterns' => [],
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => false,
+    'exposed_headers' => ['x-csrf-token'],
 
     'max_age' => false,
 
     'supports_credentials' => true,
-
 ];

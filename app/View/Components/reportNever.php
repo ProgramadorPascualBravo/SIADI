@@ -26,3 +26,5 @@ class reportNever extends Component
         return view('components.report-never');
     }
 }
+
+
