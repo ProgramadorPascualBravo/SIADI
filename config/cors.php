@@ -20,8 +20,8 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        'http://127.0.0.1:8000',
-        'https://siadi.pascualbravovirtual.edu.co/public'
+//        'http://127.0.0.1:8000',
+        'https://desarrollosiadi.pascualbravovirtual.edu.co/public'
     ],
 
     'allowed_origins_patterns' => [],
