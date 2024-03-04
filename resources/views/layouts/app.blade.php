@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{ asset('css/foundation-icons/foundation-icons.css') }}">
-    <link rel="icon" href="{{ asset('SIADI/public/img/favicon.ico') }}">
+    <link rel="icon" href="{{ asset('img/favicon.ico') }}">
     <!--<link href="{{ asset('css/app.scss') }}" rel="stylesheet">-->
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     @stack('custom-css')
