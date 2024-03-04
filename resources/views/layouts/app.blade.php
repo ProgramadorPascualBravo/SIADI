@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{ asset('css/foundation-icons/foundation-icons.css') }}">
+    <link rel="icon" href="{{ asset('SIADI/public/img/favicon.ico') }}">
     <!--<link href="{{ asset('css/app.scss') }}" rel="stylesheet">-->
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     @stack('custom-css')
@@ -123,8 +124,7 @@
                     <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('moodle-report') }}">Usuarios plataforma</a></li>
                     <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('course-report') }}">Asignaturas</a></li>
                     <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('enrollment-report') }}">Matrículas</a></li>
-                    <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('reporte-nunca.export') }}">Reportes Nunca</a></li>
-                <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('reportsNever-index') }}">Reportes Nunca Page</a></li>
+                <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('reportsNever-index') }}">Ultimo acceso</a></li>
             </ul>
         </div>
         @endcan

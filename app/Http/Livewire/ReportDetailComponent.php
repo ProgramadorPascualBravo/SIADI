@@ -2,39 +2,35 @@
 
 namespace App\Http\Livewire;
 
+use App\Group;
+use App\RolMoodle;
+use App\StateEnrollment;
+use App\Traits\ClearErrorsLivewireComponent;
+use App\Traits\FlashMessageLivewaire;
+use App\Traits\LogsTrail;
+use Illuminate\Database\QueryException;
 use Livewire\Component;
-use App\Vista;
 use Livewire\WithPagination;
 
 class ReportDetailComponent extends Component
 {
-    use WithPagination;
+    use ClearErrorsLivewireComponent, WithPagination, FlashMessageLivewaire, LogsTrail;
 
-    protected $registros;
-    public $selectedFaculty = '';
+    
 
-    public function mount()
-    {
-        $this->registros = Vista::paginate(10);
-    }
+    public  $code, $rol, $email, $state, $period;
+
+    public $hideable    = 'select';
+    public $exportable  = true;
+    public $complex = true;
 
     public function render()
     {
-        $uniqueFaculties = Vista::pluck('Facultad')->unique();
-
-        return view('livewire.reportsNever.report-detail-component', [
-            'registros' => $this->registros,
-            'uniqueFaculties' => $uniqueFaculties,
+        $this->setLog('info', __('modules.enter'), 'render', __('modules.lastAccess.title'));
+        return view('livewire.lastAccess.lastAccess-component', [
+            'groups' => Group::where('state', 1)->get(),
+            'roles'  => RolMoodle::where('state', 1)->select('name')->get(),
+            'states'  => StateEnrollment::where('state', 1)->select(['name', 'id'])->get()
         ]);
     }
-
-    public function filterByFaculty()
-    {
-        $this->registros = ($this->selectedFaculty)
-            ? Vista::where('Facultad', $this->selectedFaculty)->paginate(10)
-            : Vista::paginate(10);
-
-        $this->resetPage();
-    }
 }
-
