@@ -52,11 +52,28 @@ class LastAccessDatatableComponent extends LivewireDatatable
                 ->label('Documento')
                 ->filterable()
                 ->searchable(),
-                
+            Column::name('Nombre')
+                ->label('Nombre')
+                ->filterable()
+                ->searchable(),
             Column::name('email')
                 ->label('Correo')
                 ->filterable()
                 ->searchable(),
+            Column::name('PersonalMail')
+                ->label('Correo Personal')
+                ->filterable()
+                ->searchable(),
+            Column::name('telefono')
+                ->label('telefono')
+                ->filterable()
+                ->searchable(),
+            Column::name('celular')
+                ->label('celular')
+                ->filterable()
+                ->searchable(),
+                
+         
                 
             Column::name('Periodo')
                 ->label('Periodo')
