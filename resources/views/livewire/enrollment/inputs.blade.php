@@ -20,10 +20,6 @@
             <option value="">Seleccione una opción</option>
             <option value="{{ date('Y') }}1">1</option>
             <option value="{{ date('Y') }}2">2</option>
-            <option value="{{ date('Y') }}3">3</option>
-            <option value="{{ date('Y') }}4">4</option>
-            <option value="{{ date('Y') }}5">5</option>
-            <option value="{{ date('Y') }}6">6</option>
         </select>
         @error('period')
         <span class="form-error is-visible">{{ $message }}</span>
