@@ -25,7 +25,7 @@ class GroupComponent extends Component implements ModuleComponent
 
     public $view = 'create';
 
-    public $name, $code, $course_id, $state, $group_id, $process, $enrollment = 0;
+    public $name, $code, $course_id, $course_url, $state, $group_id, $process, $enrollment = 0;
 
    protected $listeners = ['errorNotUnique', 'edit', 'showAlert'];
 
@@ -41,6 +41,7 @@ class GroupComponent extends Component implements ModuleComponent
     {
         $this->validate([
             'name'      => 'required',
+            'course_url' => 'required',
             'course_id' => 'required|exists:courses,id',
             'state'     => 'required'
         ]);
@@ -50,6 +51,7 @@ class GroupComponent extends Component implements ModuleComponent
 
             $course->groups()->create([
                'name'      => trim($this->name),
+               'course_url' => trim($this->course_url),
                'code'      => trim($course->code . $this->name),
                'short_name'=> trim($course->code . $this->name),
                'state'     => $this->state
@@ -87,6 +89,7 @@ class GroupComponent extends Component implements ModuleComponent
     {
         $this->validate([
             'name'      => 'required',
+            'course_url'      => 'required',
             'course_id' => 'required|exists:courses,id',
         ]);
 
@@ -126,6 +129,7 @@ class GroupComponent extends Component implements ModuleComponent
         $this->code         = '';
         $this->name         = '';
         $this->course_id    = '';
+        $this->course_url    = '';
         $this->view         = 'create';
         $this->hydrate();
 
