@@ -7,6 +7,15 @@
         <span class="form-error is-visible">{{ $message }}</span>
         @enderror
     </div>
+    <!-- Bloque Nuevo URL del curso-->
+    <div class="block">
+    <label for="course_url">URL del curso</label>
+    <input type="text" class="@error('course_url') is-invalid-input @enderror input-underline" name="course_url" id="course_url" wire:model.defer="course_url" {{ $enrollment > 0 ? 'readonly' : '' }}>
+    @error('course_url')
+    <span class="form-error is-visible">{{ $message }}</span>
+    @enderror
+</div>
+    <!-- Fin URL del curso-->
     <label class="block">
         <span >{{ __('modules.course.name') }}</span>
         <select class="@error('course_id') is-invalid-input @enderror input-underline" name="course_id" id="course_id" wire:model.defer="course_id">
