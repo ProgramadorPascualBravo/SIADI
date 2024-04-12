@@ -15,3 +15,21 @@ npm-debug.log
 yarn-error.log
 .idea
 .DS_Store
+# Config files
+config/breadcrumbs.php
+config/charts.php
+config/cors.php
+config/excel.php
+config/livewire-datatables.php
+config/livewire.php
+config/permission.php
+
+# Language resources
+resources/lang/es/validation.php
+
+# Livewire DataTable views
+resources/views/livewire/datatables/*.blade.php
+resources/views/livewire/datatables/filters/*.blade.php
+
+# Custom views
+resources/views/vendor/laravel-log-viewer/log.blade.php
