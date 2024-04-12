@@ -20,6 +20,7 @@ class CreateGroupsTable extends Migration
             $table->string('code', 250)->unique();
             $table->smallInteger('state')->default(1);
             $table->foreignId('course_id');
+            $table->string('course_url')->nullable();
            $table->foreign('course_id')->references('id')->on('courses');
             $table->timestamps();
         });
