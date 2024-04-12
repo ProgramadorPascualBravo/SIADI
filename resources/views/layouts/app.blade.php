@@ -1,3 +1,5 @@
+appblade
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -124,10 +126,32 @@
                     <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('moodle-report') }}">Usuarios plataforma</a></li>
                     <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('course-report') }}">Asignaturas</a></li>
                     <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('enrollment-report') }}">Matrículas</a></li>
-                <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('reportsNever-index') }}">Ultimo acceso</a></li>
+        
             </ul>
         </div>
         @endcan
+        @can('report_read')
+        <div class="mr-6 relative" x-data="{ open : false}" x-cloak >
+            <a @click="open = true" class="cursor-pointer">
+                Reportes
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </a>
+            <ul x-show="open"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-90"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100 transform scale-100"
+                x-transition:leave-end="opacity-0 transform scale-90" @click.away="open = false" class="absolute bg-gray-800 rounded w-max z-30">
+                    
+                <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('reportsNever-index') }}">Ultimo acceso</a></li>
+                <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('reportsNever-index') }}">Reporte 140</a></li>
+            </ul>
+        </div>
+        @endcan
+
         @can('search_read')
             <div>
                 <a href="{{ route('search-index') }}">Búsquedas</a>
