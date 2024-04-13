@@ -56,6 +56,9 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
                 'name'      => Str::title(trim($row['name'])),
                 'last_name' => Str::title(trim($row['last_name'])),
                 'email'     => Str::lower(trim($row['email'])),
+                'personalMail'=> Str::lower(trim($row['personalMail'])),
+                'phone'     => (trim($row['phone'])),
+                'cellPhone' => (trim($row['cellPhone'])),
                 'document'  => trim($row['document']),
                 'password'  => md5(trim($row['document'])),
             ]);
@@ -94,7 +97,10 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
            '*.document'          => 'required|numeric',
            '*.name'              => 'required',
            '*.last_name'         => 'required',
-           '*.period'            => 'required|numeric'
+           '*.period'            => 'required|numeric',
+           '*.phone'         => 'required',
+           '*.cellPhone'         => 'required',
+           '*.personalMail'         => 'required',
        ];
     }
 
