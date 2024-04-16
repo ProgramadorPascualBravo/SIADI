@@ -80,7 +80,7 @@ class GroupComponent extends Component implements ModuleComponent
         $this->name         = $group->name;
         $this->course_id    = $group->course_id;
         $this->state        = $group->state;
-        $this->course_url    = '';
+        $this->course_url    = $group->course_url;;
         $this->enrollment   = $group->enrollments->count();
         $this->view         = 'edit';
 
@@ -103,6 +103,7 @@ class GroupComponent extends Component implements ModuleComponent
                'name'      => trim($this->name),
                'code'      => trim($course->code . $this->name),
                'course_id' => trim($course->id),
+               'course_url' => trim($this->course_url),
                'short_name'=> trim($course->code . $this->name),
                'state'     => $this->state
 

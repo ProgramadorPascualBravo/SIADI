@@ -10,7 +10,7 @@
     <!-- Bloque Nuevo URL del curso-->
     <div class="block">
     <label for="course_url">URL del curso</label>
-    <input type="text" class="@error('course_url') is-invalid-input @enderror input-underline" name="course_url" id="course_url" wire:model.defer="course_url" {{ $enrollment > 0 ? 'readonly' : '' }}>
+    <input type="text" class="@error('course_url') is-invalid-input @enderror input-underline" name="course_url" id="course_url" wire:model.defer="course_url">
     @error('course_url')
     <span class="form-error is-visible">{{ $message }}</span>
     @enderror
