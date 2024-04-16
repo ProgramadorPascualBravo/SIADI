@@ -28,7 +28,7 @@ class StudentComponent extends Component implements ModuleComponent
 
    public $view = 'create';
 
-   public $user_id, $name, $last_name, $email, $document, $state, $block, $process = false, $enrollment = 0;
+   public $user_id, $name, $last_name, $email, $cellphone, $personalmail, $phone, $document, $state, $block, $process = false, $enrollment = 0;
 
    protected $listeners = ['edit', 'showAlert'];
 
@@ -89,6 +89,9 @@ class StudentComponent extends Component implements ModuleComponent
             'last_name'     => trim($this->last_name),
             'email'         => trim($this->email),
             'document'      => trim($this->document),
+            'cellphone'        => trim($this->cellphone),
+            'phone'        => trim($this->phone),
+            'personalmail'        => trim($this->personalmail),
             'password'      => md5(trim($this->document)),
             'state'         => trim($this->state)
 

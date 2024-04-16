@@ -56,9 +56,9 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
                 'name'      => Str::title(trim($row['name'])),
                 'last_name' => Str::title(trim($row['last_name'])),
                 'email'     => Str::lower(trim($row['email'])),
-                'personalMail'=> Str::lower(trim($row['personalMail'])),
+                'cellphone'     => (trim($row['cellphone'])),
                 'phone'     => (trim($row['phone'])),
-                'cellPhone' => (trim($row['cellPhone'])),
+                'personalmail'     => (trim($row['personalmail'])),
                 'document'  => trim($row['document']),
                 'password'  => md5(trim($row['document'])),
             ]);
@@ -70,7 +70,10 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
             'rol'        => trim($row['rol']),
             'state'      => trim($row['state']),
             'email'      => trim($row['email']),
-            'period'      => trim($row['period'])
+            'period'      => trim($row['period']),
+            'cellphone'     => (trim($row['cellphone'])),
+            'phone'     => (trim($row['phone'])),
+            'personalmail'     => (trim($row['personalmail']))
         ]);
     }
 
@@ -98,9 +101,6 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
            '*.name'              => 'required',
            '*.last_name'         => 'required',
            '*.period'            => 'required|numeric',
-           '*.phone'         => 'required',
-           '*.cellPhone'         => 'required',
-           '*.personalMail'         => 'required',
        ];
     }
 

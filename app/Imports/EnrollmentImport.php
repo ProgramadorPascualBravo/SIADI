@@ -40,9 +40,9 @@ class EnrollmentImport implements ToModel, WithHeadingRow, SkipsOnFailure, WithV
          'rol'               => 'required|exists:roles_moodle,name',
          'state'             => 'required|exists:state_enrollments,id',
          'period'            => 'required',
-         '*.phone'         => 'required',
-         '*.cellPhone'         => 'required',
-         '*.personalMail'         => 'required',
+         'phone'         => 'required',
+         'cellphone'         => 'required',
+         'personalmail'         => 'required',
       ];
    }
 
@@ -56,9 +56,9 @@ class EnrollmentImport implements ToModel, WithHeadingRow, SkipsOnFailure, WithV
          'rol'     => Str::lower(trim($row['rol'])),
          'state'   => trim($row['state']),
          'period'   => trim($row['period']),
-         'personalMail'=> Str::lower(trim($row['personalMail'])),
          'phone'     => (trim($row['phone'])),
-         'cellPhone' => (trim($row['cellPhone'])),
+         'cellphone' => (trim($row['cellphone'])),
+         'personalmail' => Str::lower(trim($row['personalmail'])),
       ]);
    }
 
