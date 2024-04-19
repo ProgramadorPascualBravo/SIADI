@@ -43,6 +43,35 @@
             <span class="form-error is-visible">{{ $message }}</span>
         @enderror
     </div> --}}
+<!-- Nuevos bloques personalmail, phone y cellphone -->
+<div class="block">
+        <span >Correo Personal</span>
+        <input type="text"
+               class="@error('personalmail') is-invalid-input @enderror input-underline" name="personalmail" id="personalmail" wire:model.defer="personalmail">
+        @error('personalmail')
+            <span class="form-error is-visible">{{ $message }}</span>
+        @enderror
+    </div>
+
+    <div class="block">
+        <span >Telefono Fijo</span>
+        <input type="text"
+               class="@error('phone') is-invalid-input @enderror input-underline" name="phone" id="phone" wire:model.defer="phone">
+        @error('phone')
+            <span class="form-error is-visible">{{ $message }}</span>
+        @enderror
+    </div>
+
+    <div class="block">
+        <span >Telefono Celular</span>
+        <input type="text"
+               class="@error('cellphone') is-invalid-input @enderror input-underline" name="cellphone" id="cellphone" wire:model.defer="cellphone">
+        @error('cellphone')
+            <span class="form-error is-visible">{{ $message }}</span>
+        @enderror
+    </div>
+    <!-- Fin Nuevos bloques -->
+    
     <label class="block">
         <span >{{ __('modules.input.state') }}</span>
         <select class="@error('state') is-invalid-input @enderror input-underline" name="state" id="state" wire:model.defer="state">

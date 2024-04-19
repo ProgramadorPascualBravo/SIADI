@@ -118,6 +118,9 @@ class StudentComponent extends Component implements ModuleComponent
       $this->name          = $student->name;
       $this->last_name     = $student->last_name;
       $this->email         = $student->email;
+      $this->personalmail  = $student->personalmail;
+      $this->phone         = $student->phone;
+      $this->cellphone     = $student->cellphone;
       $this->document      = $student->document;
       $this->state         = $student->state;
       $this->enrollment    = $student->enrollments->count();
@@ -141,6 +144,9 @@ class StudentComponent extends Component implements ModuleComponent
             'last_name'     => trim($this->last_name),
             //'email'         => trim($this->email),
             'document'      => trim($this->document),
+            'personalmail'  => trim($this->personalmail),
+            'phone'         => trim($this->phone),
+            'cellphone'     => trim($this->cellphone),
             'state'         => trim($this->state),
          ]);
          $this->cancel();
@@ -164,6 +170,9 @@ class StudentComponent extends Component implements ModuleComponent
       $this->name          = '';
       $this->last_name     = '';
       $this->email         = '';
+      $this->personalmail  = '';
+      $this->phone         = '';
+      $this->cellphone     = '';
       $this->document      = '';
       $this->state         = '';
       $this->view          = 'create';
