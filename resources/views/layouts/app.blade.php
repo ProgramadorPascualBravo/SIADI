@@ -106,7 +106,7 @@
                 </ul>
         </div>
         @endcanany
-        @can('report_read')
+        @can('stats')
         <div class="mr-6 relative" x-data="{ open : false}" x-cloak >
             <a @click="open = true" class="cursor-pointer">
                 Estadisticas
