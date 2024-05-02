@@ -53,9 +53,6 @@ class EnrollmentImport implements ToModel, WithHeadingRow, SkipsOnFailure, WithV
          'rol'     => Str::lower(trim($row['rol'])),
          'state'   => trim($row['state']),
          'period'   => trim($row['period']),
-         'phone'     => (trim($row['phone'])),
-         'cellphone' => (trim($row['cellphone'])),
-         'personalmail' => Str::lower(trim($row['personalmail'])),
       ]);
    }
 
