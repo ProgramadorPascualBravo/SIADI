@@ -40,9 +40,6 @@ class EnrollmentImport implements ToModel, WithHeadingRow, SkipsOnFailure, WithV
          'rol'               => 'required|exists:roles_moodle,name',
          'state'             => 'required|exists:state_enrollments,id',
          'period'            => 'required',
-         'phone'         => 'required',
-         'cellphone'         => 'required',
-         'personalmail'         => 'required',
       ];
    }
 
