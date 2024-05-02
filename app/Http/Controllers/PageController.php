@@ -27,6 +27,8 @@ class PageController extends Controller
         return view('index');
     }
 
+    
+
     public function singin(Request $request)
     {
         $request->validate([
@@ -264,4 +266,5 @@ class PageController extends Controller
           'chartenrollment'   => $chart_enrollment
        ]);
     }
+
 }

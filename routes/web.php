@@ -3,6 +3,10 @@
 use App\Http\Controllers\PageController;
 use App\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\ReportCuarentaComponent;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,11 +45,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::view('/role', 'permission-role.index', ['option' => false])->name('role-index');;
 
-        Route::view('/reports', 'reportsNever.index')->name('reportsNever-index');
+        Route::view('/reports/reportaccess', 'reportsNever.index')->name('reportsNever-index');
+        
+        
        // Route::get('/dashboard/reports', [ReporteNunca::class, 'show']);
 
-
-        Route::get('/dashboard/reports', [ReporteNunca::class, 'show'])->name('dashboard.reports');
+     
+       Route::view('/reports/report140', 'reportCuarenta.index')->name('reportCuarenta-index');
 
         Route::view('/permission', 'permission-role.index', ['option' => true])->name('permission-index');
 

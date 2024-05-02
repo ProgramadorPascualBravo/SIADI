@@ -145,7 +145,7 @@
                 x-transition:leave-end="opacity-0 transform scale-90" @click.away="open = false" class="absolute bg-gray-800 rounded w-max z-30">
                     
                 <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('reportsNever-index') }}">Ultimo acceso</a></li>
-                <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('reportsNever-index') }}">Reporte 140</a></li>
+                <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('reportCuarenta-index') }}">Reporte 140</a></li>
             </ul>
         </div>
         @endcan
