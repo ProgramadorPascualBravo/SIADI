@@ -20,6 +20,11 @@ class ReportCuarentaComponent extends LivewireDatatable
     public function columns()
     {
         return [
+            Column::name('Estado de Entrega')
+                ->label('Estado de Entrega')
+                ->filterable()
+                ->searchable(),
+
             Column::name('Documento')
                 ->label('Documento')
                 ->filterable()
@@ -34,23 +39,18 @@ class ReportCuarentaComponent extends LivewireDatatable
                 ->label('Correo Docente')
                 ->filterable()
                 ->searchable(),    
-                
-                                 
+                       
                 Column::name('Semestre')
                 ->label('Semestre')
                 ->filterable()
                 ->searchable(),                
-
-
-
-
 
                 Column::name('Codigo SIADI')
                 ->label('Codigo SIADI')
                 ->filterable()
                 ->searchable(),               
 
-            Column::name('Codigo Asignatura')
+                Column::name('Codigo Asignatura')
                 ->label('Codigo Asignatura')
                 ->filterable()
                 ->searchable(),
@@ -65,25 +65,25 @@ class ReportCuarentaComponent extends LivewireDatatable
                 ->filterable()
                 ->searchable(),               
 
-            Column::name('Url Curso')
+                Column::name('Url Curso')
                 ->label('Url Curso')
                 ->filterable()
                 ->searchable(),
-                
+                   
                 Column::name('Departamento')
                 ->label('Departamento')
                 ->filterable()
                 ->searchable(),
 
-
-
-
                 Column::name('Programa')
                 ->label('Programa')
                 ->filterable()
-                ->searchable(),                
-    
-
+                ->searchable(), 
+                
+                Column::name('Numero de Estudiantes')
+                ->label('Numero de Estudiantes')
+                ->filterable()
+                ->searchable(),
         ];
     }
 }

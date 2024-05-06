@@ -65,7 +65,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::view('/students/mass-creation', 'student.mass-creation')->name('moodle-mass-creation')
            ->middleware('permission:moodle_massive');
 
-        Route::get('/students/report', [PageController::class, 'reportStudent'])->name('moodle-report')->middleware('permission:report_read');
+        Route::get('/students/stats', [PageController::class, 'reportStudent'])->name('moodle-report')->middleware('permission:stats');
 
         Route::get('/students/report/download', [PageController::class, 'exportReportStudent'])->name('moodle-report-download')->middleware('permission:report_read');
 
@@ -86,7 +86,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
           return view('course.details', ['course' => \App\Course::find($id)]);
         })->name('course-detail')->middleware('permission:course_detail');
 
-       Route::get('/course/report', [PageController::class, 'reportCourse'])->name('course-report')->middleware('permission:report_read');
+       Route::get('/course/stats', [PageController::class, 'reportCourse'])->name('course-report')->middleware('permission:stats');
 
        Route::view('/group', 'group.index')->name('group-index')
            ->middleware('permission:group_read');
@@ -113,7 +113,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->middleware('permission:enrollment_massive');
 
 
-       Route::get('/enrollment/report', [PageController::class, 'reportEnrollment'])->name('enrollment-report')->middleware('permission:report_read');
+       Route::get('/enrollment/stats', [PageController::class, 'reportEnrollment'])->name('enrollment-report')->middleware('permission:stats');
 
        Route::any('/search', function ()
         {

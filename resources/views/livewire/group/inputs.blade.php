@@ -28,6 +28,19 @@
             <span class="form-error is-visible">{{ $message }}</span>
         @enderror
     </label>
+    <!-- Bloque Nuevo URL del curso-->
+    <label class="block">
+        <span >Entrega del grupo</span>
+        <select class="@error('course_state') is-invalid-input @enderror input-underline" name="course_state" id="course_state" wire:model.defer="course_state">
+            <option value="">Seleccione una opción</option>
+            <option value="SI">Si</option>
+            <option value="NO">No</option>
+        </select>
+        @error('course_state')
+        <span class="form-error is-visible">{{ $message }}</span>
+        @enderror
+    </label>
+    <!-- Fin URL del curso-->
     <label class="block">
         <span >{{ __('modules.input.state') }}</span>
         <select class="@error('state') is-invalid-input @enderror input-underline" name="state" id="state" wire:model.defer="state">

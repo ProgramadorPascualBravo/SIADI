@@ -25,7 +25,7 @@ class GroupComponent extends Component implements ModuleComponent
 
     public $view = 'create';
 
-    public $name, $code, $course_id, $course_url, $state, $group_id, $process, $enrollment = 0;
+    public $name, $code, $course_id, $course_url, $course_state, $state, $group_id, $process, $enrollment = 0;
 
    protected $listeners = ['errorNotUnique', 'edit', 'showAlert'];
 
@@ -42,6 +42,7 @@ class GroupComponent extends Component implements ModuleComponent
         $this->validate([
             'name'      => 'required',
             'course_url' => 'required',
+            'course_state' => 'required',
             'course_id' => 'required|exists:courses,id',
             'state'     => 'required'
         ]);
@@ -52,6 +53,7 @@ class GroupComponent extends Component implements ModuleComponent
             $course->groups()->create([
                'name'      => trim($this->name),
                'course_url' => trim($this->course_url),
+               'course_state' => trim($this->course_state),
                'code'      => trim($course->code . $this->name),
                'short_name'=> trim($course->code . $this->name),
                'state'     => $this->state
@@ -80,7 +82,8 @@ class GroupComponent extends Component implements ModuleComponent
         $this->name         = $group->name;
         $this->course_id    = $group->course_id;
         $this->state        = $group->state;
-        $this->course_url    = $group->course_url;;
+        $this->course_url    = $group->course_url;
+        $this->course_state    = $group->course_state;
         $this->enrollment   = $group->enrollments->count();
         $this->view         = 'edit';
 
@@ -104,6 +107,7 @@ class GroupComponent extends Component implements ModuleComponent
                'code'      => trim($course->code . $this->name),
                'course_id' => trim($course->id),
                'course_url' => trim($this->course_url),
+               'course_state' => trim($this->course_state),
                'short_name'=> trim($course->code . $this->name),
                'state'     => $this->state
 
@@ -132,6 +136,7 @@ class GroupComponent extends Component implements ModuleComponent
         $this->name         = '';
         $this->course_id    = '';
         $this->course_url    = '';
+        $this->course_state    = '';
         $this->view         = 'create';
         $this->hydrate();
 
