@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\LastAccess; 
+use App\ReportCuarenta; 
 use App\Traits\DeleteMassive;
 use Illuminate\Support\Facades\Auth;
 use Mediconesystems\LivewireDatatables\Column;
@@ -12,7 +12,7 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 class ReportCuarentaTable extends LivewireDatatable 
 {
    use DeleteMassive;
-   public $model       = ReportDetailComponent::class; 
+   public $model       = ReportCuarentaDetailComponent::class; 
    public $hideable    = 'select';
    public $exportable  = true;
    public $complex = true;
