@@ -63,14 +63,17 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
                 'password'    => md5(trim($row['document'])),
             ]);
         } else {
-            // Actualizar datos existentes
-            $student->update([
-                //'name'        => Str::title(trim($row['name'])),
-                //'last_name'   => Str::title(trim($row['last_name'])),
+            // Preparar datos para actualizar, excluyendo los valores vacíos
+            $dataToUpdate = array_filter([
                 'cellphone'   => trim($row['cellphone']),
                 'phone'       => trim($row['phone']),
-                'personalmail'=> trim($row['personalmail']),
+                'personalmail' => trim($row['personalmail']),
             ]);
+
+            // Actualizar datos existentes si hay algo que actualizar
+            if (!empty($dataToUpdate)) {
+                $student->update($dataToUpdate);
+            }
         }
 
         $this->sum(true);

@@ -33,8 +33,9 @@
         <span >Entrega del grupo</span>
         <select class="@error('course_state') is-invalid-input @enderror input-underline" name="course_state" id="course_state" wire:model.defer="course_state">
             <option value="">Seleccione una opción</option>
-            <option value="SI">Si</option>
-            <option value="NO">No</option>
+            <option value="Entregado">Entregado</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="No aplica">No aplica</option>
         </select>
         @error('course_state')
         <span class="form-error is-visible">{{ $message }}</span>
