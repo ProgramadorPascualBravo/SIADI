@@ -27,10 +27,11 @@ class ReportCuarentaDetailComponent extends Component
     public function render()
     {
         $this->setLog('info', __('modules.enter'), 'render', __('modules.reportCuarenta.title'));
-        return view('livewire.reportCuarenta.index', [
+        return view('livewire.reportCuarenta.reportCuarenta-component', [
             'groups' => Group::where('state', 1)->get(),
             'roles'  => RolMoodle::where('state', 1)->select('name')->get(),
             'states'  => StateEnrollment::where('state', 1)->select(['name', 'id'])->get()
         ]);
     }
+    
 }

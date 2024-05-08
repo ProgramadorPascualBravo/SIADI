@@ -1,6 +1,6 @@
 <div wire:poll.30s="someMethod">
 @extends('layouts.app')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 @section('content')
     {{-- {{ Breadcrumbs::render('dashboard.reports') }} --}}
@@ -11,7 +11,7 @@
             <hr class="border-siadi-blue-700">
         </div>
         <div>
-            @livewire('report-cuarenta-component')
+            @livewire('report-cuarenta-detail-component')
         </div>
     </div>
 @endsection

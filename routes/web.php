@@ -53,6 +53,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
      
        Route::view('/reports/report140', 'reportCuarenta.index')->name('reportCuarenta-index');
 
+
         Route::view('/permission', 'permission-role.index', ['option' => true])->name('permission-index');
 
         Route::view('/students', 'student.index')->name('moodle-index')

@@ -6,7 +6,7 @@ use App\ReportCuarenta;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
-class ReportCuarentaComponent extends LivewireDatatable
+class ReportCuarentaDatatableComponent extends LivewireDatatable
 {
 
     public $hideable    = 'select';
@@ -20,8 +20,8 @@ class ReportCuarentaComponent extends LivewireDatatable
     public function columns()
     {
         return [
-            Column::name('Estado de Entrega')
-                ->label('Estado de Entrega')
+            Column::name('Estado De Entrega')
+                ->label('Estado De Entrega')
                 ->filterable()
                 ->searchable(),
 
