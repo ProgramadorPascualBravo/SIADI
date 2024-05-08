@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Livewire;
 
 
@@ -20,8 +21,8 @@ class ReportCuarentaDatatableComponent extends LivewireDatatable
     public function columns()
     {
         return [
-            Column::name('Estado De Entrega')
-                ->label('Estado De Entrega')
+            Column::name('Estado_de_Entrega')
+                ->label('Estado de Entrega')
                 ->filterable()
                 ->searchable(),
 
@@ -30,57 +31,57 @@ class ReportCuarentaDatatableComponent extends LivewireDatatable
                 ->filterable()
                 ->searchable(),
 
-                Column::name('Nombre')
+            Column::name('Nombre')
                 ->label('Nombre')
                 ->filterable()
-                ->searchable(), 
+                ->searchable(),
 
-                Column::name('Correo Docente')
+            Column::name('Correo_Docente')
                 ->label('Correo Docente')
                 ->filterable()
-                ->searchable(),    
-                       
-                Column::name('Semestre')
+                ->searchable(),
+
+            Column::name('Semestre')
                 ->label('Semestre')
                 ->filterable()
-                ->searchable(),                
+                ->searchable(),
 
-                Column::name('Codigo SIADI')
+            Column::name('Codigo_SIADI')
                 ->label('Codigo SIADI')
                 ->filterable()
-                ->searchable(),               
+                ->searchable(),
 
-                Column::name('Codigo Asignatura')
+            Column::name('Codigo_Asignatura')
                 ->label('Codigo Asignatura')
                 ->filterable()
                 ->searchable(),
-                
-                Column::name('Nombre MAA')
+
+            Column::name('Nombre_MAA')
                 ->label('Nombre MAA')
                 ->filterable()
                 ->searchable(),
 
-                Column::name('Grupo')
+            Column::name('Grupo')
                 ->label('Grupo')
                 ->filterable()
-                ->searchable(),               
+                ->searchable(),
 
-                Column::name('Url Curso')
+            Column::name('Url_Curso')
                 ->label('Url Curso')
                 ->filterable()
                 ->searchable(),
-                   
-                Column::name('Departamento')
+
+            Column::name('Departamento')
                 ->label('Departamento')
                 ->filterable()
                 ->searchable(),
 
-                Column::name('Programa')
+            Column::name('Programa')
                 ->label('Programa')
                 ->filterable()
-                ->searchable(), 
-                
-                Column::name('Numero de Estudiantes')
+                ->searchable(),
+
+            Column::name('Numero_Estudiantes')
                 ->label('Numero de Estudiantes')
                 ->filterable()
                 ->searchable(),
