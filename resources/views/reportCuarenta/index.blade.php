@@ -7,7 +7,7 @@
 
     <div class="grid grid-cols-1 gap-2 px-4">
         <div>
-            <h1 class="font-medium text-4xl mt-4 mb-1 text-siadi-blue-900 ">Reporte 140</h1>
+            <h1 class="font-medium text-4xl mt-4 mb-1 text-siadi-blue-900 ">Oferta Académica</h1>
             <hr class="border-siadi-blue-700">
         </div>
         <div>

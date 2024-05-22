@@ -1,6 +1,6 @@
 
 <div>
-    <h1>Reporte 140</h1>
+    <h1>Oferta Académica</h1>
     @livewire('report-cuarenta-datatable-component')
 </div>
 
