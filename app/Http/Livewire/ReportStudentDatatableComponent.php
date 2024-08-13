@@ -19,8 +19,8 @@ class ReportStudentDatatableComponent extends LivewireDatatable
     public function columns()
     {
         return [
-            Column::name('id')
-            ->label('ID')
+            Column::name('document')
+                ->label('Documento')
                 ->filterable()
                 ->searchable(),
 
@@ -39,28 +39,9 @@ class ReportStudentDatatableComponent extends LivewireDatatable
             ->filterable()
                 ->searchable(),
 
-            Column::name('password')
-            ->label('Contraseña')
-            ->filterable()
-                ->searchable(),
 
-            Column::name('document')
-            ->label('Documento')
-            ->filterable()
-                ->searchable(),
-
-            Column::name('state')
-            ->label('Estado')
-            ->filterable()
-                ->searchable(),
-
-            Column::name('created_at')
-            ->label('Fecha de Creación')
-            ->filterable()
-                ->searchable(),
-
-            Column::name('updated_at')
-            ->label('Fecha de Actualización')
+            Column::name('fecha_de_nacimiento')
+            ->label('Fecha de Nacimiento')
             ->filterable()
                 ->searchable(),
 
@@ -79,10 +60,7 @@ class ReportStudentDatatableComponent extends LivewireDatatable
             ->filterable()
                 ->searchable(),
 
-            Column::name('fecha_de_nacimiento')
-            ->label('Fecha de Nacimiento')
-            ->filterable()
-                ->searchable(),
+         
 
             Column::name('plan_estudios')
             ->label('Plan de Estudios')
