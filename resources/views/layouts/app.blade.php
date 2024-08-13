@@ -146,6 +146,7 @@
                     
                 <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('reportsNever-index') }}">Ultimo acceso</a></li>
                 <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('reportCuarenta-index') }}">Oferta Académica</a></li>
+                <li><a class="block my-4 w-full px-4 py-2 hover:bg-gray-100 hover:text-gray-800" href="{{ route('reportStudent-index') }}">Reporte Estudiantes</a></li>
             </ul>
         </div>
         @endcan

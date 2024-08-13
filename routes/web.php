@@ -46,12 +46,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::view('/role', 'permission-role.index', ['option' => false])->name('role-index');;
 
         Route::view('/reports/reportaccess', 'reportsNever.index')->name('reportsNever-index');
-        
-        
-       // Route::get('/dashboard/reports', [ReporteNunca::class, 'show']);
 
-     
        Route::view('/reports/report140', 'reportCuarenta.index')->name('reportCuarenta-index');
+
+       Route::view('/reports/reportstudent', 'reportStudent.index')->name('reportStudent-index');
+
 
 
         Route::view('/permission', 'permission-role.index', ['option' => true])->name('permission-index');
