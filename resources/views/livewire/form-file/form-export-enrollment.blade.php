@@ -9,10 +9,6 @@
             Extendida
             <input class="text-siadi-red h-6 w-6 cursor-pointer" type="radio" wire:model="type" name="type" value="0">
         </label>
-        <label for="anexo_user" class="ml-2">
-            Completos
-            <input class="text-siadi-blue-500 h-6 w-6 cursor-pointer" type="radio" wire:model="type" name="type" value="3">
-        </label>
     </div>
     <form wire:submit.prevent="analyze"
           x-data="{ isUploading: false, progress: 0 }"
@@ -40,7 +36,7 @@
                             Cargar archivo
                         </span>
                     @endif
-                    <input type='file' wire:model="file" name="file" class="hidden" />
+                    <input type='file'  wire:model="file" name="file" class="hidden" />
                 </label>
             </div>
         </div>

@@ -14,7 +14,7 @@ class Student extends Model
     protected $table = 'students';
 
     protected $fillable = [
-       'name', 'last_name', 'email', 'password', 'document', 'state', 'cellphone', 'phone', 'personalmail'
+       'name', 'last_name', 'email', 'password', 'document', 'state', 'cellphone', 'phone', 'personalmail','fecha_de_nacimiento'
     ];
 
     public function enrollments()

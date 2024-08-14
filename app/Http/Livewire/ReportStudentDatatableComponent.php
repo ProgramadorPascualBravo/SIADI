@@ -76,6 +76,11 @@ class ReportStudentDatatableComponent extends LivewireDatatable
             ->label('Jornada')
             ->filterable()
                 ->searchable(),
+
+            Column::name('created_at')
+            ->label('Fecha de creacion')
+            ->filterable()
+                ->searchable(),
         ];
 
     }
