@@ -12,7 +12,8 @@ class StudentInfo extends Model
         'document',
         'plan_estudios',
         'departamento',
-        'jornada'
+        'jornada',
+        'codigo_matricula'
     ];
 
     public $timestamps = true;

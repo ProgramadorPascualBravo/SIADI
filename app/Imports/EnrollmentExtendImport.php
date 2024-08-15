@@ -37,28 +37,28 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
         $this->values = $row;
 
         try {
-            // Log iniciales
             Log::info('Procesando fila de datos', $row);
             Log::info('Fecha de nacimiento original:', ['fecha_de_nacimiento' => $row['fecha_de_nacimiento']]);
 
             $fecha_de_nacimiento = null;
+
             if (!empty($row['fecha_de_nacimiento'])) {
-                try {
-                    $fecha_de_nacimiento = Carbon::createFromFormat('d/m/Y', trim($row['fecha_de_nacimiento']))->format('Y-m-d');
-                } catch (\Exception $e) {
-                    $fecha_de_nacimiento = trim($row['fecha_de_nacimiento']);
+                if (is_numeric($row['fecha_de_nacimiento']) && strlen($row['fecha_de_nacimiento']) == 8) {
+                    $fecha_de_nacimiento = Carbon::createFromFormat('Ymd', trim($row['fecha_de_nacimiento']))->format('Y-m-d');
+                } elseif (is_numeric($row['fecha_de_nacimiento'])) {
+                    $fecha_de_nacimiento = Carbon::parse('1900-01-01')->addDays($row['fecha_de_nacimiento'] - 2)->format('Y-m-d');
+                } else {
+                    $fecha_de_nacimiento = Carbon::parse(trim($row['fecha_de_nacimiento']))->format('Y-m-d');
                 }
             }
 
             Log::info('Fecha de nacimiento después de la conversión (si aplica):', ['fecha_de_nacimiento' => $fecha_de_nacimiento]);
 
-            // Verifica si el estudiante ya existe
             $student = Student::where('email', $row['email'])
                 ->where('document', $row['document'])
                 ->first();
 
             if (is_null($student)) {
-                // Crea un nuevo estudiante si no existe
                 $student = Student::create([
                     'name'              => Str::title(trim($row['name'])),
                     'last_name'         => Str::title(trim($row['last_name'])),
@@ -70,8 +70,15 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
                     'password'          => md5(trim($row['document'])),
                     'fecha_de_nacimiento' => $fecha_de_nacimiento,
                 ]);
+
+                StudentInfo::create([
+                    'document'      => trim($row['document']),
+                    'plan_estudios' => trim($row['plan_estudios']),
+                    'departamento'  => trim($row['departamento']),
+                    'jornada'       => trim($row['jornada']),
+                    'code'          => trim($row['code']),
+                ]);
             } else {
-                // Preparar datos para actualizar, excluyendo los valores vacíos
                 $dataToUpdate = array_filter([
                     'cellphone'         => trim($row['cellphone']),
                     'phone'             => trim($row['phone']),
@@ -79,28 +86,23 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
                     'fecha_de_nacimiento' => $fecha_de_nacimiento,
                 ]);
 
-                // Actualizar datos existentes si hay algo que actualizar
                 if (!empty($dataToUpdate)) {
                     $student->update($dataToUpdate);
                 }
-            }
 
-            $studentInfo = $student->info;
+                $studentInfo = StudentInfo::where('document', $student->document)->first();
 
-            if (is_null($studentInfo)) {
-                // Si no existe, crea uno nuevo
-                $student->info()->create([
-                    'plan_estudios' => trim($row['plan_estudios']),
-                    'departamento'  => trim($row['departamento']),
-                    'jornada'       => trim($row['jornada']),
-                ]);
-            } else {
-                // Si existe, actualizar
-                $studentInfo->update([
-                    'plan_estudios' => trim($row['plan_estudios']),
-                    'departamento'  => trim($row['departamento']),
-                    'jornada'       => trim($row['jornada']),
-                ]);
+                if ($studentInfo->code !== trim($row['code'])) {
+                    StudentInfo::create([
+                        'document'      => trim($row['document']),
+                        'plan_estudios' => trim($row['plan_estudios']),
+                        'departamento'  => trim($row['departamento']),
+                        'jornada'       => trim($row['jornada']),
+                        'codigo_matricula'  => trim($row['code']),
+                    ]);
+                } else {
+                    Log::info('El código es el mismo, no se requiere actualización en student_info.');
+                }
             }
 
             $this->sum(true);
@@ -119,7 +121,6 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
             Log::error("Error procesando la fila:", ['error' => $e->getMessage(), 'row' => $row]);
             $this->failures->push(new Failure(
                 $row['document'],
-                $row['fecha_de_nacimiento'],
                 'import',
                 [$e->getMessage()],
                 $row
@@ -150,10 +151,10 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
             '*.name'              => 'required',
             '*.last_name'         => 'required',
             '*.period'            => 'required|numeric',
-            '*.fecha_de_nacimiento' => 'nullable|date_format:Y-m-d', // Nueva validación
-            '*.plan_estudios'     => 'required|string', // Nueva validación
-            '*.departamento'      => 'required|string', // Nueva validación
-            '*.jornada'           => 'required|string', // Nueva validación
+            '*.fecha_de_nacimiento' => 'required',
+            '*.plan_estudios'     => 'required|string',
+            '*.departamento'      => 'required|string',
+            '*.jornada'           => 'required|string',
         ];
     }
 
