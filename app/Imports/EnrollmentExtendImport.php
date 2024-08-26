@@ -17,6 +17,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
+use App\Exports\Failure;
 
 class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnError, SkipsOnFailure
 {
@@ -37,9 +38,6 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
         $this->values = $row;
 
         try {
-            Log::info('Procesando fila de datos', $row);
-            Log::info('Fecha de nacimiento original:', ['fecha_de_nacimiento' => $row['fecha_de_nacimiento']]);
-
             $fecha_de_nacimiento = null;
 
             if (!empty($row['fecha_de_nacimiento'])) {
@@ -51,14 +49,13 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
                     $fecha_de_nacimiento = Carbon::parse(trim($row['fecha_de_nacimiento']))->format('Y-m-d');
                 }
             }
-
-            Log::info('Fecha de nacimiento después de la conversión (si aplica):', ['fecha_de_nacimiento' => $fecha_de_nacimiento]);
-
+            // Verifica si el estudiante ya existe
             $student = Student::where('email', $row['email'])
                 ->where('document', $row['document'])
                 ->first();
 
             if (is_null($student)) {
+                // Crea un nuevo estudiante si no existe
                 $student = Student::create([
                     'name'              => Str::title(trim($row['name'])),
                     'last_name'         => Str::title(trim($row['last_name'])),
@@ -71,14 +68,16 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
                     'fecha_de_nacimiento' => $fecha_de_nacimiento,
                 ]);
 
+                // Inserta también en la tabla student_info
                 StudentInfo::create([
                     'document'      => trim($row['document']),
                     'plan_estudios' => trim($row['plan_estudios']),
                     'departamento'  => trim($row['departamento']),
                     'jornada'       => trim($row['jornada']),
-                    'code'          => trim($row['code']),
+                    'codigo_matricula' => trim($row['code']), 
                 ]);
             } else {
+                // Preparar datos para actualizar, excluyendo los valores vacíos
                 $dataToUpdate = array_filter([
                     'cellphone'         => trim($row['cellphone']),
                     'phone'             => trim($row['phone']),
@@ -86,22 +85,38 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
                     'fecha_de_nacimiento' => $fecha_de_nacimiento,
                 ]);
 
+                // Actualizar datos existentes si hay algo que actualizar
                 if (!empty($dataToUpdate)) {
                     $student->update($dataToUpdate);
                 }
 
+                // Comparar y actualizar/inserta en la tabla student_info
                 $studentInfo = StudentInfo::where('document', $student->document)->first();
 
-                if ($studentInfo->code !== trim($row['code'])) {
+                if ($studentInfo) {
+                    // Solo actualizar si alguno de los campos es diferente
+                    if (
+                        $studentInfo->plan_estudios !== trim($row['plan_estudios']) ||
+                        $studentInfo->departamento !== trim($row['departamento']) ||
+                        $studentInfo->jornada !== trim($row['jornada']) ||
+                        $studentInfo->code !== trim($row['code']) // Comparar también el campo 'code'
+                    ) {
+                        $studentInfo->update([
+                            'plan_estudios' => trim($row['plan_estudios']),
+                            'departamento'  => trim($row['departamento']),
+                            'jornada'       => trim($row['jornada']),
+                            'code'          => trim($row['code']), // Actualizar el campo 'code'
+                        ]);
+                    }
+                } else {
+                    // Si no existe el registro en student_info, crear uno nuevo
                     StudentInfo::create([
                         'document'      => trim($row['document']),
                         'plan_estudios' => trim($row['plan_estudios']),
                         'departamento'  => trim($row['departamento']),
                         'jornada'       => trim($row['jornada']),
-                        'codigo_matricula'  => trim($row['code']),
+                        'code'          => trim($row['code']), // Agregar el campo 'code'
                     ]);
-                } else {
-                    Log::info('El código es el mismo, no se requiere actualización en student_info.');
                 }
             }
 
