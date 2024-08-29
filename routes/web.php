@@ -111,7 +111,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::view('/unenrollment/mass-update', 'unenrollment.mass-update')->name('unenrollment-mass-update')
             ->middleware('permission:enrollment_massive');
-
+            
+            Route::view('/susenrollment/mass-update', 'susenrollment.mass-update')->name('susenrollment-mass-update')
+            ->middleware('permission:enrollment_massive');  
 
        Route::get('/enrollment/stats', [PageController::class, 'reportEnrollment'])->name('enrollment-report')->middleware('permission:stats');
 

@@ -47,6 +47,8 @@
   'student-table' => 'App\\Http\\Livewire\\StudentTable',
   'unenrollment-form-file-component' => 'App\\Http\\Livewire\\UnEnrollmentFormFileComponent',
   'unenrollment-mass-update-component' => 'App\\Http\\Livewire\\UnEnrollmentMassUpdateComponent',
+  'susenrollment-form-file-component' => 'App\\Http\\Livewire\\SusEnrollmentFormFileComponent',
+  'susenrollment-mass-update-component' => 'App\\Http\\Livewire\\SusEnrollmentMassUpdateComponent',
   'user-component' => 'App\\Http\\Livewire\\UserComponent',
   'user-detail-component' => 'App\\Http\\Livewire\\UserDetailComponent',
   'user-table' => 'App\\Http\\Livewire\\UserTable',

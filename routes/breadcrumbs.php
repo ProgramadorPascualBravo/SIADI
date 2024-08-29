@@ -135,6 +135,11 @@ Breadcrumbs::for('unenrollment-mass-update', function (BreadcrumbTrail $trail){
     $trail->push('Desmaticulación masiva', route('unenrollment-mass-update'));
 });
 
+Breadcrumbs::for('susenrollment-mass-update', function (BreadcrumbTrail $trail){
+   $trail->parent('enrollment');
+   $trail->push('Suspensión masiva', route('susenrollment-mass-update'));
+});
+
 Breadcrumbs::for('enrollment-report', function (BreadcrumbTrail $trail) {
    $trail->parent('enrollment');
    $trail->push("Estadísticas", route('enrollment-report'));
