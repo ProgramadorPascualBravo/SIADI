@@ -45,19 +45,35 @@ class Student extends Model
    // Accessor para obtener la fecha en el formato d/m/Y
    public function getFechaDeNacimientoAttribute($value)
    {
-      return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
+      // Verifica si el valor es nulo o está vacío
+      if ($value) {
+         try {
+            return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
+         } catch (\Exception $e) {
+            // En caso de que la fecha no esté en el formato esperado, retorna el valor original o un valor por defecto
+            return $value;
+         }
+      }
+
+      return 'Fecha no disponible'; // o cualquier valor predeterminado que prefieras
    }
 
-   // Mutator para establecer la fecha desde el formato YYYYMMDD
+
    public function setFechaDeNacimientoAttribute($value)
    {
-      // Verifica si el valor tiene 8 caracteres y está en el formato esperado YYYYMMDD
-      if (strlen($value) == 8 && preg_match('/^\d{8}$/', $value)) {
-         // Convierte la fecha al formato Y-m-d
-         $this->attributes['fecha_de_nacimiento'] = Carbon::createFromFormat('Ymd', $value)->format('Y-m-d');
+      // Verifica si el valor es nulo o está vacío
+      if ($value) {
+         // Verifica si el valor tiene 8 caracteres y está en el formato esperado YYYYMMDD
+         if (strlen($value) == 8 && preg_match('/^\d{8}$/', $value)) {
+            // Convierte la fecha al formato Y-m-d
+            $this->attributes['fecha_de_nacimiento'] = Carbon::createFromFormat('Ymd', $value)->format('Y-m-d');
+         } else {
+            // Si no está en el formato esperado, lo guarda tal cual
+            $this->attributes['fecha_de_nacimiento'] = $value;
+         }
       } else {
-         // Si no está en el formato esperado, lo guarda tal cual
-         $this->attributes['fecha_de_nacimiento'] = $value;
+         // Si el valor es nulo o vacío, lo guarda como nulo o maneja como prefieras
+         $this->attributes['fecha_de_nacimiento'] = null;
       }
    }
 }
