@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 
 
 use App\Exports\FailuresExport;
-use App\Imports\susEnrollmentImport;
+use App\Imports\SusEnrollmentImport;
 use App\Traits\ClearErrorsLivewireComponent;
 use App\Traits\DownloadDocument;
 use App\Traits\LogsTrail;
