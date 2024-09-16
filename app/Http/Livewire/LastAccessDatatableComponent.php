@@ -72,9 +72,6 @@ class LastAccessDatatableComponent extends LivewireDatatable
                 ->label('celular')
                 ->filterable()
                 ->searchable(),
-                
-         
-                
             Column::name('Periodo')
                 ->label('Periodo')
                 ->filterable()
@@ -85,7 +82,10 @@ class LastAccessDatatableComponent extends LivewireDatatable
                 ->filterable(),
                 
             Column::name('UltimoCur')
-                ->label('Ultimo acceso')
+                ->label('Ultimo acceso cursos')
+                ->filterable(),
+            Column::name('UltimoAccesoPlataforma')
+                ->label('Ultimo Acceso Plataforma')
                 ->filterable(),
         ];
     }

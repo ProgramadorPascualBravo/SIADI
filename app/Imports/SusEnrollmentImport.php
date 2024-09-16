@@ -56,7 +56,7 @@ class SusEnrollmentImport implements ToCollection, WithHeadingRow, WithValidatio
                     ->first();
 
                 if (!isset($u)) {
-                    //dd("A",$u);
+                    
                     $validator->errors()->add($key,'La matricula no existe');
                 }
 
