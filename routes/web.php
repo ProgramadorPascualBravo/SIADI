@@ -49,7 +49,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
        Route::view('/reports/report140', 'reportCuarenta.index')->name('reportCuarenta-index');
 
-       Route::view('/reports/reportstudent', 'reportStudent.index')->name('reportStudent-index');
+       Route::view('/reports/reportStudent', 'reportStudent.index')->name('reportStudent-index');
 
 
 
