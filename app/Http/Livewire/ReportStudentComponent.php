@@ -27,7 +27,7 @@ class ReportStudentComponent extends Component
     public function render()
     {
         $this->setLog('info', __('modules.enter'), 'render', __('modules.reportStudent.title'));
-        return view('livewire.reportStudent-component', [
+        return view('livewire.reportStudent.reportStudent-component', [
             'groups' => Group::where('state', 1)->get(),
             'roles'  => RolMoodle::where('state', 1)->select('name')->get(),
             'states'  => StateEnrollment::where('state', 1)->select(['name', 'id'])->get()
