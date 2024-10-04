@@ -84,6 +84,9 @@ class LastAccessDatatableComponent extends LivewireDatatable
             Column::name('UltimoCur')
                 ->label('Ultimo acceso cursos')
                 ->filterable(),
+            Column::name('jornada')
+                ->label('jornada')
+                ->filterable(),
             Column::name('UltimoAccesoPlataforma')
                 ->label('Ultimo Acceso Plataforma')
                 ->filterable(),
