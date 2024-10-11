@@ -134,12 +134,12 @@ class EnrollmentExtendImport implements ToModel, WithHeadingRow, WithValidation,
             ]);
         } catch (\Exception $e) {
             Log::error("Error procesando la fila:", ['error' => $e->getMessage(), 'row' => $row]);
-            $this->failures->push(new Failure(
-                $row['document'],
-                'import',
-                [$e->getMessage()],
-                $row
-            ));
+            $this->failures->push([
+                'document' => $row['document'],
+                'context' => 'import',
+                'messages' => [$e->getMessage()],
+                'row' => $row
+            ]);
         }
     }
 
