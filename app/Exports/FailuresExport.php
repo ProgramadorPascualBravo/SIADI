@@ -15,6 +15,7 @@ use Maatwebsite\Excel\Excel;
 /**
  * Libreria https://docs.laravel-excel.com/3.1/exports/
  * Class FailuresExport
+ * test
  * @package App\Exports
  */
 class FailuresExport implements FromView
