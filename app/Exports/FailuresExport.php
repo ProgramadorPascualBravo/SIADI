@@ -1,22 +1,14 @@
 <?php
 
-
 namespace App\Exports;
 
-
-use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromView;
-use Maatwebsite\Excel\Excel;
 
 /**
- * Libreria https://docs.laravel-excel.com/3.1/exports/
- * Class FailuresExport
- * test
- * @package App\Exports
+ * Clase para exportar fallos durante la importación usando Laravel Excel
  */
 class FailuresExport implements FromView
 {
@@ -25,17 +17,33 @@ class FailuresExport implements FromView
    protected $failures;
    protected $viewname;
 
-   public function __construct($collection, $viewname)
+   /**
+    * Constructor que recibe una colección de fallos y el nombre de la vista.
+    *
+    * @param Collection $collection La colección de errores capturados
+    * @param string $viewname Nombre de la vista que usará Laravel Excel
+    */
+   public function __construct(Collection $collection, $viewname)
    {
       $this->failures = $collection;
       $this->viewname = $viewname;
    }
 
+   /**
+    * Retorna la vista que será usada para generar el archivo Excel.
+    *
+    * @return View
+    */
    public function view(): View
    {
-      return view($this->viewname, ['failures' => $this->failures()]);
+      return view($this->viewname, ['failures' => $this->failures]);
    }
 
+   /**
+    * Devuelve la colección de fallos.
+    *
+    * @return Collection
+    */
    public function failures(): Collection
    {
       return $this->failures;
